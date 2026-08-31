@@ -40,13 +40,14 @@ The catalog covers:
 ├── LICENSE
 ├── .nojekyll
 └── data/
-    ├── catalog.part1
+    ├── catalog.part1a
     ├── catalog.part2
     ├── catalog.part3
-    └── catalog.part4
+    ├── catalog.part4a
+    └── catalog.part4b
 ```
 
-The four `catalog.part*` files are generated Base64 shards of a gzip-compressed JSON object containing `models`, `tools`, `paid`, and `repos`. The browser joins and decompresses them at runtime. This is a generated deployment format; on updates the shards are regenerated together.
+The `catalog.part*` files are generated Base64 shards of a gzip-compressed JSON object containing `models`, `tools`, `paid`, and `repos`. The browser joins and decompresses them at runtime. This is a generated deployment format; on updates all shards are regenerated together.
 
 ## Updating
 
