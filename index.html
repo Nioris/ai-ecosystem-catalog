@@ -87,13 +87,12 @@ const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&
 let MODELS=[],TOOLS=[],PAID=[],REPOS=[],catalogKind="Все",paidCat="Все",repoCat="Все";
 
 async function load(){
-  const [m,t,p,r]=await Promise.all([
-    fetch("data/models.json").then(x=>x.json()),
-    fetch("data/tools.json").then(x=>x.json()),
-    fetch("data/paid-services.json").then(x=>x.json()),
-    fetch("data/repositories.json").then(x=>x.json())
-  ]);
-  MODELS=m;TOOLS=t;PAID=p;REPOS=r;
+  const partNames=["data/catalog.part1","data/catalog.part2","data/catalog.part3","data/catalog.part4"];
+  const encoded=(await Promise.all(partNames.map(u=>fetch(u).then(r=>r.text())))).join("");
+  const bytes=Uint8Array.from(atob(encoded),c=>c.charCodeAt(0));
+  const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"));
+  const data=JSON.parse(await new Response(stream).text());
+  MODELS=data.models;TOOLS=data.tools;PAID=data.paid;REPOS=data.repos;
   $("#summary").innerHTML=[
     `${MODELS.length+TOOLS.length} карточек`,`${MODELS.length} моделей`,`${TOOLS.length} инструментов`,
     `${PAID.length} платных сервисов`,`${REPOS.length} репозиториев`
