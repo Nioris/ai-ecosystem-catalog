@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Curated catalog of AI models, agents, tools, game assets, video, audio, 3D and open-source repositories.">
+<title>AI Ecosystem Catalog</title>
+<style>
+:root{--bg:#08101f;--panel:#111a2c;--panel2:#17233a;--text:#edf3ff;--muted:#9db0d1;--line:#263655;--accent:#6f9dff;--good:#64d8a2;--warn:#ffd06f;--violet:#b598ff}
+@media(prefers-color-scheme:light){:root{--bg:#f4f7fb;--panel:#fff;--panel2:#f4f7fc;--text:#162039;--muted:#64718a;--line:#dfe6f1;--accent:#315fc3;--good:#17794b;--warn:#9a6500;--violet:#6d49b7}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.55 Inter,system-ui,Segoe UI,Arial,sans-serif}a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:1600px;margin:auto;padding:24px}.hero,.hub{border:1px solid var(--line);border-radius:22px;padding:24px;background:linear-gradient(135deg,var(--panel),var(--panel2));margin-bottom:18px}
+h1{font-size:clamp(30px,4vw,52px);line-height:1.05;margin:0 0 10px}h2{margin:0 0 8px}.muted,.hero p{color:var(--muted)}
+.pills,.filters,.tags,.actions{display:flex;gap:7px;flex-wrap:wrap}.pill,.chip,.tag{border:1px solid var(--line);border-radius:999px;background:var(--panel2);padding:6px 9px}.pill,.tag{font-size:11px}.chip{cursor:pointer;color:var(--text);font-size:12px}.chip.active{background:var(--accent);color:#fff;border-color:transparent}
+.toolbar{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:16px;padding:11px;margin:12px 0}.search{width:100%;padding:12px 14px;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:11px;font-size:15px}.filters{margin-top:8px}.stats{margin-top:7px;color:var(--muted);font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:11px}.card{border:1px solid var(--line);border-radius:17px;padding:15px;background:var(--panel);display:flex;flex-direction:column;gap:9px;min-height:340px}.head{display:flex;justify-content:space-between;gap:10px}.title{font-size:17px;font-weight:780}.org{font-size:11px;color:var(--muted)}.kind{font-size:10px;color:var(--violet);border:1px solid var(--line);border-radius:999px;padding:4px 7px;height:max-content}.desc{margin:0}.meta{display:grid;grid-template-columns:82px 1fr;gap:4px 8px;font-size:12px}.meta b{color:var(--muted)}.code{background:#060b14;color:#d8e7ff;border:1px solid var(--line);border-radius:9px;padding:8px;white-space:pre-wrap;word-break:break-word;font:11px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace}.note{font-size:11px;color:var(--muted)}.actions{margin-top:auto}.btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:9px;padding:8px 10px;cursor:pointer;font-size:12px}.btn.primary{background:var(--accent);border-color:transparent;color:#fff}
+.updateGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}.update{border:1px solid var(--line);border-radius:12px;background:var(--panel2);padding:10px}.update b{display:block}.update small{color:var(--good)}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0}.tab{font-weight:700}.section{display:none}.section.active{display:block}.price{color:var(--warn);font-weight:700}
+footer{color:var(--muted);padding:24px 2px;font-size:12px}
+@media(max-width:600px){.wrap{padding:12px}.grid{grid-template-columns:1fr}.hero,.hub{padding:17px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <h1>AI Ecosystem Catalog</h1>
+  <p><b>v10 · 31 августа 2026.</b> Модели, агенты, локальные runtimes, coding, изображения, видео, музыка, voice, 3D, game assets, платные сервисы и полезные open-source репозитории.</p>
+  <div class="pills" id="summary"></div>
+</header>
+
+<section class="hub">
+  <h2>Свежие изменения</h2>
+  <p class="muted">Крупные обновления после предыдущей версии. Полные данные находятся в карточках каталога.</p>
+  <div class="updateGrid">
+    <a class="update" href="https://huggingface.co/Qwen/Qwen3.8-Flash-Next" target="_blank"><small>26.08</small><b>Qwen3.8‑Flash‑Next</b>125B / 6B active, preview архитектуры Qwen4.</a>
+    <a class="update" href="https://huggingface.co/zai-org/GLM-5.3-Flash" target="_blank"><small>август</small><b>GLM‑5.3‑Flash</b>Open multimodal 320B / 18B active.</a>
+    <a class="update" href="https://www.liquid.ai/blog/lfm2.5-dspark" target="_blank"><small>20.08</small><b>Liquid DSpark</b>Speculative decoding для LFM2.5.</a>
+    <a class="update" href="https://github.com/NousResearch/hermes-agent/releases" target="_blank"><small>27.08</small><b>Hermes Agent v0.20.6</b>Обновлён агентный стек.</a>
+    <a class="update" href="https://github.com/openclaw/openclaw/releases" target="_blank"><small>31.08</small><b>OpenClaw 2026.8.1</b>Текущий stable на дату каталога.</a>
+    <a class="update" href="https://x.ai/news/grok-4-6" target="_blank"><small>12.08</small><b>Grok 4.6</b>Обновлена облачная флагманская запись.</a>
+  </div>
+</section>
+
+<div class="tabs" id="tabs">
+  <button class="chip tab active" data-section="catalog">Модели и инструменты</button>
+  <button class="chip tab" data-section="paid">Платные сервисы</button>
+  <button class="chip tab" data-section="repos">Топ репозитории</button>
+</div>
+
+<section id="catalog" class="section active">
+  <div class="toolbar">
+    <input id="catalogQ" class="search" type="search" placeholder="Поиск: Qwen, музыка, pixel art, coding, 24 ГБ, VFX…">
+    <div id="catalogFilters" class="filters"></div>
+    <div id="catalogStats" class="stats"></div>
+  </div>
+  <main id="catalogGrid" class="grid"></main>
+</section>
+
+<section id="paid" class="section">
+  <div class="toolbar">
+    <input id="paidQ" class="search" type="search" placeholder="Поиск платных сервисов: sprites, 3D, video, Suno, Cursor…">
+    <div id="paidFilters" class="filters"></div>
+    <div id="paidStats" class="stats"></div>
+  </div>
+  <main id="paidGrid" class="grid"></main>
+</section>
+
+<section id="repos" class="section">
+  <div class="toolbar">
+    <input id="repoQ" class="search" type="search" placeholder="Поиск репозиториев: ComfyUI, Godot, TTS, RAG, video…">
+    <div id="repoFilters" class="filters"></div>
+    <div id="repoStats" class="stats"></div>
+  </div>
+  <main id="repoGrid" class="grid"></main>
+</section>
+
+<footer>
+  Данные обновляются вручную по официальным источникам. Цены, лицензии и hardware requirements меняются — перед покупкой или крупной загрузкой перепроверяйте официальный источник.
+  · <a href="https://github.com/Nioris/ai-ecosystem-catalog">GitHub</a>
+  · <a href="CHANGELOG.md">Changelog</a>
+</footer>
+</div>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+let MODELS=[],TOOLS=[],PAID=[],REPOS=[],catalogKind="Все",paidCat="Все",repoCat="Все";
+
+async function load(){
+  const [m,t,p,r]=await Promise.all([
+    fetch("data/models.json").then(x=>x.json()),
+    fetch("data/tools.json").then(x=>x.json()),
+    fetch("data/paid-services.json").then(x=>x.json()),
+    fetch("data/repositories.json").then(x=>x.json())
+  ]);
+  MODELS=m;TOOLS=t;PAID=p;REPOS=r;
+  $("#summary").innerHTML=[
+    `${MODELS.length+TOOLS.length} карточек`,`${MODELS.length} моделей`,`${TOOLS.length} инструментов`,
+    `${PAID.length} платных сервисов`,`${REPOS.length} репозиториев`
+  ].map(x=>`<span class="pill"><b>${x}</b></span>`).join("");
+  initFilters(); renderAll();
+}
+function chips(el,vals,setter){
+  el.innerHTML=vals.map((v,i)=>`<button class="chip ${i===0?"active":""}" data-v="${esc(v)}">${esc(v)}</button>`).join("");
+  el.querySelectorAll("button").forEach(b=>b.onclick=()=>{
+    el.querySelectorAll("button").forEach(z=>z.classList.toggle("active",z===b));setter(b.dataset.v);renderAll();
+  });
+}
+function initFilters(){
+  const kinds=["Все",...new Set([...MODELS,...TOOLS].map(x=>x.kind||"Модель"))];
+  chips($("#catalogFilters"),kinds,v=>catalogKind=v);
+  chips($("#paidFilters"),["Все",...new Set(PAID.map(x=>x.category))],v=>paidCat=v);
+  chips($("#repoFilters"),["Все",...new Set(REPOS.map(x=>x.category))],v=>repoCat=v);
+}
+function mainCard(x){
+  const tags=(x.tags2||x.cats||[]).slice(0,8);
+  return `<article class="card"><div class="head"><div><div class="title">${esc(x.name)}</div><div class="org">${esc(x.org)} · ${esc(x.updated||"")}</div></div><span class="kind">${esc(x.kind||"Модель")}</span></div>
+  <div class="tags">${tags.map(t=>`<span class="tag">${esc(t)}</span>`).join("")}<span class="tag">${esc(x.status||"")}</span><span class="tag">${esc(x.locality||"")}</span></div>
+  <p class="desc">${esc(x.desc)}</p>
+  <div class="meta"><b>Требования</b><span>${esc(x.requirements||x.hw||"")}</span>${x.run?`<b>Runtime</b><span>${esc(x.run)}</span>`:""}</div>
+  ${x.install?`<div class="code">${esc(x.install)}</div>`:""}${x.note?`<div class="note">${esc(x.note)}</div>`:""}
+  <div class="actions"><a class="btn primary" href="${esc(x.source)}" target="_blank" rel="noopener">Официальный источник ↗</a>${x.install?`<button class="btn copy" data-copy="${encodeURIComponent(x.install)}">Копировать</button>`:""}</div></article>`;
+}
+function paidCard(x){return `<article class="card"><div><div class="title">${esc(x.name)}</div><div class="org">${esc(x.category)} · ${esc(x.checked)}</div></div>
+  <p class="desc">${esc(x.purpose)}</p><div class="price">${esc(x.price)}</div>
+  <div class="meta"><b>Free</b><span>${esc(x.free)}</span><b>Оплата</b><span>${esc(x.billing)}</span><b>Коммерция</b><span>${esc(x.commercial)}</span></div>
+  ${x.note?`<div class="note">${esc(x.note)}</div>`:""}<div class="actions"><a class="btn primary" href="${esc(x.url)}" target="_blank">Сервис ↗</a><a class="btn" href="${esc(x.pricing_url)}" target="_blank">Тарифы</a></div></article>`}
+function repoCard(x){return `<article class="card"><div><div class="title">${esc(x.name)}</div><div class="org">${esc(x.slug)} · ${esc(x.status)}</div></div>
+  <p class="desc">${esc(x.purpose)}</p><div class="code">${esc(x.clone)}</div>${x.note?`<div class="note">${esc(x.note)}</div>`:""}
+  <div class="actions"><a class="btn primary" href="${esc(x.url)}" target="_blank">GitHub ↗</a><button class="btn copy" data-copy="${encodeURIComponent(x.clone)}">Клонировать</button></div></article>`}
+function wireCopy(){ $$(".copy").forEach(b=>b.onclick=async()=>{const s=decodeURIComponent(b.dataset.copy);try{await navigator.clipboard.writeText(s);let o=b.textContent;b.textContent="Скопировано";setTimeout(()=>b.textContent=o,1000)}catch(e){prompt("Скопируйте:",s)}})}
+function renderAll(){
+  const cq=$("#catalogQ").value.trim().toLowerCase(), all=[...MODELS,...TOOLS];
+  const ca=all.filter(x=>(catalogKind==="Все"||(x.kind||"Модель")===catalogKind)&&(!cq||[x.name,x.org,x.desc,x.kind,x.status,x.locality,x.requirements,x.note,...(x.tags2||[]),...(x.cats||[])].join(" ").toLowerCase().includes(cq)));
+  $("#catalogGrid").innerHTML=ca.map(mainCard).join("");$("#catalogStats").textContent=`Показано ${ca.length} из ${all.length}`;
+  const pq=$("#paidQ").value.trim().toLowerCase(), pa=PAID.filter(x=>(paidCat==="Все"||x.category===paidCat)&&(!pq||Object.values(x).join(" ").toLowerCase().includes(pq)));
+  $("#paidGrid").innerHTML=pa.map(paidCard).join("");$("#paidStats").textContent=`Показано ${pa.length} из ${PAID.length}`;
+  const rq=$("#repoQ").value.trim().toLowerCase(), ra=REPOS.filter(x=>(repoCat==="Все"||x.category===repoCat)&&(!rq||Object.values(x).join(" ").toLowerCase().includes(rq)));
+  $("#repoGrid").innerHTML=ra.map(repoCard).join("");$("#repoStats").textContent=`Показано ${ra.length} из ${REPOS.length}`;wireCopy();
+}
+$$(".tab").forEach(b=>b.onclick=()=>{$$(".tab").forEach(x=>x.classList.toggle("active",x===b));$$(".section").forEach(s=>s.classList.toggle("active",s.id===b.dataset.section))});
+["catalogQ","paidQ","repoQ"].forEach(id=>$("#"+id).addEventListener("input",renderAll));
+load().catch(e=>{document.body.innerHTML=`<pre style="padding:20px">Не удалось загрузить данные: ${esc(e.message)}</pre>`});
+</script>
+</body>
+</html>
