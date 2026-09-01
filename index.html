@@ -3,52 +3,64 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="AI Ecosystem Catalog: models, agents, tools, repositories, game assets, video, audio, 3D and profession/task navigator.">
-<title>AI Ecosystem Catalog v11</title>
+<meta name="description" id="metaDescription" content="AI Ecosystem Catalog">
+<title>AI Ecosystem Catalog v12</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <div class="wrap">
 <header class="hero">
-  <h1>AI Ecosystem Catalog</h1>
-  <p><b>v11 · 1 сентября 2026.</b> Теперь это не только список: выберите профессию, задачу и ограничения — каталог подберёт модели, агенты, сервисы и репозитории.</p>
-  <div class="pills" id="summary"><span class="pill">Загрузка данных…</span></div>
+  <div class="heroTop">
+    <div>
+      <h1>AI Ecosystem Catalog</h1>
+      <p><b id="versionText">v12</b> <span id="heroText"></span></p>
+    </div>
+    <div class="languageBox" aria-label="Language selector">
+      <span id="languageLabel">Язык</span>
+      <div class="langSwitch" id="langSwitch">
+        <button class="langBtn" data-lang="ru">RU</button>
+        <button class="langBtn" data-lang="en">EN</button>
+        <button class="langBtn" data-lang="zh">中文</button>
+      </div>
+    </div>
+  </div>
+  <div class="pills" id="summary"><span class="pill" id="loadingText">Загрузка данных…</span></div>
 </header>
 
 <section class="hub navigator">
   <div class="navbox">
-    <h2>Подобрать под работу</h2>
-    <p class="muted">Вход через профессию и конкретную задачу. Можно выбрать одно или оба поля.</p>
+    <h2 id="navigatorTitle">Подобрать под работу</h2>
+    <p class="muted" id="navigatorText"></p>
     <div class="selectGrid">
-      <label>Профессия<select id="profession" class="select"><option value="">Все профессии</option></select></label>
-      <label>Что нужно сделать<select id="task" class="select"><option value="">Все задачи</option></select></label>
+      <label><span id="professionLabel">Профессия</span><select id="profession" class="select"></select></label>
+      <label><span id="taskLabel">Что нужно сделать</span><select id="task" class="select"></select></label>
     </div>
     <div class="filters" id="quickFilters"></div>
-    <button class="btn" id="clearNavigator" style="margin-top:10px">Сбросить подбор</button>
+    <button class="btn" id="clearNavigator" style="margin-top:10px"></button>
   </div>
   <div class="navbox">
-    <h2>Готовые стеки</h2>
-    <p class="muted">Быстрые пресеты, которые выставляют профессию и задачу.</p>
+    <h2 id="recipesTitle">Готовые стеки</h2>
+    <p class="muted" id="recipesText"></p>
     <div class="recipeGrid" id="recipes"></div>
   </div>
 </section>
 
 <div class="tabs" id="tabs">
-  <button class="chip tab active" data-section="catalog">Модели и инструменты</button>
-  <button class="chip tab" data-section="paid">Платные сервисы</button>
-  <button class="chip tab" data-section="repos">Топ GitHub</button>
-  <button class="chip tab" data-section="radar">Radar / Находки</button>
+  <button class="chip tab active" data-section="catalog" id="tabCatalog"></button>
+  <button class="chip tab" data-section="paid" id="tabPaid"></button>
+  <button class="chip tab" data-section="repos" id="tabRepos"></button>
+  <button class="chip tab" data-section="radar" id="tabRadar"></button>
 </div>
 
 <section id="catalog" class="section active">
   <div class="toolbar">
-    <input id="catalogQ" class="search" type="search" placeholder="Поиск понимает синонимы: спрайт, озвучка, ролик, PDF, кодинг, 3д…">
+    <input id="catalogQ" class="search" type="search">
     <div class="filterRow">
       <div id="catalogKinds" class="filters"></div>
       <select id="catalogSort" class="sort">
-        <option value="relevance">Рекомендуемые</option>
-        <option value="newest">Новые / обновлённые</option>
-        <option value="name">По названию</option>
+        <option value="relevance"></option>
+        <option value="newest"></option>
+        <option value="name"></option>
       </select>
     </div>
     <div id="catalogStats" class="stats"></div>
@@ -58,10 +70,13 @@
 
 <section id="paid" class="section">
   <div class="toolbar">
-    <input id="paidQ" class="search" type="search" placeholder="Платные: sprites, 3D, video, Suno, Cursor, API…">
+    <input id="paidQ" class="search" type="search">
     <div class="filterRow">
       <div id="paidFilters" class="filters"></div>
-      <select id="paidSort" class="sort"><option value="name">По названию</option><option value="free">С free tier сначала</option></select>
+      <select id="paidSort" class="sort">
+        <option value="name"></option>
+        <option value="free"></option>
+      </select>
     </div>
     <div id="paidStats" class="stats"></div>
   </div>
@@ -69,12 +84,17 @@
 </section>
 
 <section id="repos" class="section">
-  <div class="warning">GitHub-раздел теперь различает curated-статус и проверенные health-метаданные. Stars/последний push показываются только там, где мы действительно проверили GitHub API; отсутствие числа не означает, что репозиторий плохой.</div>
+  <div class="warning" id="repoWarning"></div>
   <div class="toolbar">
-    <input id="repoQ" class="search" type="search" placeholder="GitHub: MinerU, agent skills, game engine, video, MCP, local AI…">
+    <input id="repoQ" class="search" type="search">
     <div class="filterRow">
       <div id="repoFilters" class="filters"></div>
-      <select id="repoSort" class="sort"><option value="curated">Curated</option><option value="stars">Stars ↓</option><option value="health">Health</option><option value="name">Название</option></select>
+      <select id="repoSort" class="sort">
+        <option value="curated"></option>
+        <option value="stars">Stars ↓</option>
+        <option value="health"></option>
+        <option value="name"></option>
+      </select>
     </div>
     <div id="repoStats" class="stats"></div>
   </div>
@@ -83,16 +103,17 @@
 
 <section id="radar" class="section">
   <div class="hub">
-    <h2>Radar / Находки</h2>
-    <p class="muted">Сюда попадают сигналы из GitHub, Hugging Face, официальных блогов и публичных каналов вроде <b>@vibecoding_tg</b>. Это не «источник истины»: проект сначала проверяется, затем переносится в основной каталог.</p>
+    <h2 id="radarTitle"></h2>
+    <p class="muted" id="radarText"></p>
   </div>
   <main id="radarGrid" class="radarGrid"></main>
 </section>
 
 <footer>
-  Источники проверяются вручную. Для security-sensitive bridges, MCP и skills всегда читайте README/SECURITY перед установкой.
+  <span id="footerText"></span>
   · <a href="https://github.com/Nioris/ai-ecosystem-catalog">GitHub</a>
   · <a href="CHANGELOG.md">Changelog</a>
+  · <a href="TRANSLATIONS.md">Translations</a>
 </footer>
 </div>
 
