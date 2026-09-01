@@ -7,13 +7,17 @@
 - Added curated ready-made stacks: Solo HTML Game, 2D Pixel Game, 3D Indie Game, YouTube/Shorts, Local AI Workstation, Research/PDF, Writer Studio and Coding Agent Stack.
 - Added Russian/English synonym expansion for common searches (`спрайт`, `озвучка`, `ролик`, `3д`, `PDF`, `кодинг`, etc.).
 - Added combinable quick filters: Local, Cloud, Open weights/source, <=24 GB VRAM, Russian, API and Free tier.
+- Profession/task selection now also narrows paid services and GitHub repositories.
 - Added sorting for catalog and GitHub repositories.
 
 ### GitHub / repository health
-- Added verified metadata fields for selected repositories: Stars, Forks, last push, license and verification date.
+- Added verified metadata fields: Stars, Forks, last push, license and verification date.
 - Added health labels (`A Active`, `B Experimental`, `C Legacy`, `D Archived`).
 - Corrected **Flowise** to Archived.
 - Kept **Roo Code** as Archived/Legacy.
+- Added an automated weekly GitHub Actions health check covering **111 repositories**.
+- Added `data/repo-health.json` with stars, forks, archive state, language, open issues, last push and latest release.
+- The first full automated scan completed with **0 API errors**.
 
 ### New verified projects
 - MinerU
