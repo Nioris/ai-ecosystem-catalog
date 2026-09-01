@@ -4,11 +4,13 @@ let DATA={models:[],tools:[],paid:[],repos:[],radar:[],taxonomy:null,recipes:[]}
 let state={kind:"Все",paidCat:"Все",repoCat:"Все",profession:"",task:"",quick:new Set()};
 
 async function json(url){const r=await fetch(url);if(!r.ok)throw new Error(`${url}: HTTP ${r.status}`);return r.json()}
+async function optionalJson(url){try{return await json(url)}catch(e){return null}}
 async function load(){
  const partNames=["data/catalog.part1a","data/catalog.part2","data/catalog.part3","data/catalog.part4a","data/catalog.part4b"];
- const [encodedParts,extra]=await Promise.all([
+ const [encodedParts,extra,healthSnapshot]=await Promise.all([
    Promise.all(partNames.map(u=>fetch(u).then(r=>{if(!r.ok)throw new Error(`${u}: HTTP ${r.status}`);return r.text()}))),
-   json("data/v11-extra.json")
+   json("data/v11-extra.json"),
+   optionalJson("data/repo-health.json")
  ]);
  const encoded=encodedParts.join("");
  const bytes=Uint8Array.from(atob(encoded),c=>c.charCodeAt(0));
@@ -19,6 +21,7 @@ async function load(){
  for(const x of extra.newTools||[]){if(!tools.some(z=>z.name===x.name))tools.push(x)}
  const repos=[...base.repos];
  for(const r of extra.repoAdditions||[]){const i=repos.findIndex(z=>z.slug===r.slug);i>=0?repos[i]=Object.assign({},repos[i],r):repos.push(r)}
+ const liveHealth=healthSnapshot?.repositories||{};for(const r of repos){if(liveHealth[r.slug])Object.assign(r,liveHealth[r.slug])}
  DATA={models:base.models,tools,paid:base.paid,repos,radar:extra.radar||[],taxonomy:extra.taxonomy,recipes:extra.recipes||[]};
  $("#summary").innerHTML=[
   `${DATA.models.length+DATA.tools.length} карточки`,`${DATA.models.length} моделей`,`${DATA.tools.length} инструментов`,
