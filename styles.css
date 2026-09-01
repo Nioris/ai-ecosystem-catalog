@@ -22,3 +22,12 @@ h1{font-size:clamp(30px,4vw,52px);line-height:1.04;margin:0 0 9px}h2{margin:0 0 
 footer{color:var(--muted);padding:24px 2px;font-size:12px}
 @media(max-width:850px){.navigator{grid-template-columns:1fr}.selectGrid{grid-template-columns:1fr}.filterRow{grid-template-columns:1fr}}
 @media(max-width:600px){.wrap{padding:11px}.grid{grid-template-columns:1fr}.hero,.hub{padding:17px}.toolbar{top:4px}}
+.heroTop{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+.heroTop>div:first-child{min-width:0}.languageBox{display:flex;align-items:center;gap:9px;white-space:nowrap;color:var(--muted);font-size:12px}
+.langSwitch{display:flex;gap:5px;padding:4px;border:1px solid var(--line);background:var(--panel);border-radius:12px}
+.langBtn{border:0;background:transparent;color:var(--muted);cursor:pointer;padding:7px 9px;border-radius:8px;font:600 12px/1 system-ui}
+.langBtn.active{background:var(--accent);color:#fff}.langBtn:hover:not(.active){background:var(--panel2);color:var(--text)}
+.fallbackTag{color:var(--warn);border-style:dashed}.fallbackTag[title]{cursor:help}
+html[lang="zh-CN"] body{font-family:Inter,"Noto Sans SC","Microsoft YaHei","PingFang SC",system-ui,sans-serif}
+html[lang="zh-CN"] .card{line-height:1.6}
+@media(max-width:700px){.heroTop{flex-direction:column}.languageBox{align-self:stretch;justify-content:space-between}}
