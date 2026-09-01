@@ -30,7 +30,7 @@ function chips(el,vals,setter){
  el.innerHTML=vals.map((v,i)=>`<button class="chip ${i===0?"active":""}" data-v="${esc(v)}">${esc(v)}</button>`).join("");
  el.querySelectorAll("button").forEach(b=>b.onclick=()=>{el.querySelectorAll("button").forEach(z=>z.classList.toggle("active",z===b));setter(b.dataset.v);renderAll()});
 }
-function hay(x){return [x.name,x.org,x.desc,x.kind,x.status,x.locality,x.requirements,x.note,x.purpose,x.category,x.slug,x.license,...(x.tags2||[]),...(x.cats||[])].join(" ").toLowerCase()}
+function hay(x){return [x.name,x.org,x.desc,x.kind,x.status,x.locality,x.requirements,x.note,x.purpose,x.category,x.slug,x.license,x.source,x.install,x.run,x.url,x.price,x.free,x.billing,x.commercial,...(x.tags2||[]),...(x.cats||[])].join(" ").toLowerCase()}
 function expandQuery(q){
  const tokens=q.toLowerCase().split(/\s+/).filter(Boolean), out=[...tokens];
  for(const t of tokens){for(const [k,vals] of Object.entries(DATA.taxonomy.synonyms||{})){if(t===k||t.includes(k))out.push(...vals)}}
@@ -102,18 +102,18 @@ function renderCatalog(){
  $("#catalogStats").textContent=`Показано ${rows.length} из ${all.length}`+(state.profession||state.task||state.quick.size?" · активен подбор":"");wireCopy()
 }
 function renderPaid(){
- const q=$("#paidQ").value.trim(),rows=DATA.paid.filter(x=>(state.paidCat==="Все"||x.category===state.paidCat)&&queryMatch(x,q));
- if($("#paidSort").value==="name")rows.sort((a,b)=>a.name.localeCompare(b.name,"ru"));
- else rows.sort((a,b)=>(/free|бесплат/i.test(b.free||"")?1:0)-(/free|бесплат/i.test(a.free||"")?1:0));
- $("#paidGrid").innerHTML=rows.map(paidCard).join("");$("#paidStats").textContent=`Показано ${rows.length} из ${DATA.paid.length}`
+ const q=$("#paidQ").value.trim();let rows=DATA.paid.map(x=>({x,score:roleTaskMatch(x)})).filter(z=>z.score>=0&&(state.paidCat==="Все"||z.x.category===state.paidCat)&&queryMatch(z.x,q));
+ if($("#paidSort").value==="name")rows.sort((a,b)=>a.x.name.localeCompare(b.x.name,"ru"));
+ else rows.sort((a,b)=>(/free|бесплат/i.test(b.x.free||"")?1:0)-(/free|бесплат/i.test(a.x.free||"")?1:0));
+ $("#paidGrid").innerHTML=rows.map(z=>paidCard(z.x)).join("");$("#paidStats").textContent=`Показано ${rows.length} из ${DATA.paid.length}`+(state.profession||state.task?" · активен подбор":"")
 }
 function renderRepos(){
- const q=$("#repoQ").value.trim();let rows=DATA.repos.filter(x=>(state.repoCat==="Все"||x.category===state.repoCat)&&queryMatch(x,q));
+ const q=$("#repoQ").value.trim();let rows=DATA.repos.map(x=>({x,score:roleTaskMatch(x)})).filter(z=>z.score>=0&&(state.repoCat==="Все"||z.x.category===state.repoCat)&&queryMatch(z.x,q));
  const mode=$("#repoSort").value;
- if(mode==="stars")rows.sort((a,b)=>(b.stars||0)-(a.stars||0));
- if(mode==="name")rows.sort((a,b)=>a.name.localeCompare(b.name,"ru"));
- if(mode==="health")rows.sort((a,b)=>health(a)[0].localeCompare(health(b)[0]));
- $("#repoGrid").innerHTML=rows.map(repoCard).join("");$("#repoStats").textContent=`Показано ${rows.length} из ${DATA.repos.length} · metadata verified: ${rows.filter(x=>x.verified).length}`;wireCopy()
+ if(mode==="stars")rows.sort((a,b)=>(b.x.stars||0)-(a.x.stars||0));
+ if(mode==="name")rows.sort((a,b)=>a.x.name.localeCompare(b.x.name,"ru"));
+ if(mode==="health")rows.sort((a,b)=>health(a.x)[0].localeCompare(health(b.x)[0]));
+ $("#repoGrid").innerHTML=rows.map(z=>repoCard(z.x)).join("");$("#repoStats").textContent=`Показано ${rows.length} из ${DATA.repos.length} · metadata verified: ${rows.filter(z=>z.x.verified).length}`+(state.profession||state.task?" · активен подбор":"");wireCopy()
 }
 function renderRadar(){$("#radarGrid").innerHTML=DATA.radar.map(radarCard).join("")}
 function renderAll(){renderCatalog();renderPaid();renderRepos();renderRadar()}
