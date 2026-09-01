@@ -1,5 +1,23 @@
 # Changelog
 
+## v12 — 2026-09-01
+
+### Multilingual UI
+- Added first-class **Russian / English / Simplified Chinese** interface support.
+- Added header language switcher: `RU / EN / 中文`.
+- Added shareable language URLs: `?lang=ru`, `?lang=en`, `?lang=zh`.
+- Browser language/localStorage is used as a default preference.
+- Localized profession/task navigator, quick filters, ready-made stacks, tabs, sorting, warnings, stats and card action labels.
+- Added English and Chinese search synonym expansion.
+- Added exact translation maps for common categories, statuses, locality and license/access labels.
+
+### Progressive content localization
+- Added `locales/ru.json`, `locales/en.json` and `locales/zh.json`.
+- Added curated English/Chinese content translations for newly verified projects such as MinerU, Agent Skills, Codebase Memory MCP, Prime Agent, Vercel AI SDK, DFlash and `codex-chatgpt-web`.
+- Untranslated long-form descriptions safely fall back to the original curated text and are visibly marked as `original RU` / `俄文原文`.
+- Added `TRANSLATIONS.md` with the contribution format.
+- Added `scripts/check_i18n.py` and a GitHub Actions locale-schema validation workflow.
+
 ## v11 — 2026-09-01
 
 ### Navigation / UX
