@@ -4,14 +4,40 @@ Public, curated navigator of AI models, agents, runtimes, creative tools, game-d
 
 **Live site:** https://nioris.github.io/ai-ecosystem-catalog/
 
-## v11 — 1 September 2026
+## v12 — 1 September 2026
 
-The catalog is now task-oriented rather than only a flat list:
+### Three languages
+
+The interface now supports:
+
+- **Русский** — `?lang=ru`
+- **English** — `?lang=en`
+- **简体中文** — `?lang=zh`
+
+The language selector is available in the page header. The choice is stored locally in the browser, while the query parameter makes a language-specific link shareable.
+
+The following parts are fully localized:
+
+- navigation and tabs;
+- profession/task navigator;
+- quick filters;
+- ready-made stacks;
+- search placeholders and language-specific synonym expansion;
+- sort controls;
+- card field labels and action buttons;
+- common category/status/locality labels;
+- Radar UI and warnings.
+
+Long catalog descriptions use **progressive localization**. When a curated English/Chinese override exists it is shown; otherwise the original curated text is retained and marked as `original RU` / `俄文原文`. This prevents unreliable automatic translation of licenses, hardware requirements and security warnings. See [`TRANSLATIONS.md`](TRANSLATIONS.md).
+
+## Task-oriented navigation
+
+The catalog is more than a flat list:
 
 - choose a **profession / role**;
 - choose **what you want to do**;
-- combine filters such as local/cloud, open-source/open-weights, <=24 GB VRAM, Russian, API and free tier;
-- search with Russian/English synonyms;
+- combine filters such as local/cloud, open-source/open-weights, <=24 GB VRAM, Russian support, API and free tier;
+- search with Russian, English and Chinese synonyms;
 - browse verified GitHub health metadata;
 - use **Radar** for newly discovered projects before they are promoted into the main catalog.
 
@@ -53,12 +79,19 @@ The site loads `data/repo-health.json` when available and falls back to curated 
 ├── README.md
 ├── CHANGELOG.md
 ├── SOURCES.md
+├── TRANSLATIONS.md
 ├── LICENSE
 ├── .nojekyll
+├── locales/
+│   ├── ru.json
+│   ├── en.json
+│   └── zh.json
 ├── scripts/
-│   └── refresh_repo_health.py
+│   ├── refresh_repo_health.py
+│   └── check_i18n.py
 ├── .github/workflows/
-│   └── refresh-repo-health.yml
+│   ├── refresh-repo-health.yml
+│   └── check-i18n.yml
 └── data/
     ├── catalog.part1a
     ├── catalog.part2
@@ -70,7 +103,7 @@ The site loads `data/repo-health.json` when available and falls back to curated 
     └── repo-health.json
 ```
 
-The current site keeps the compressed v10 base dataset and applies the small `v11-extra.json` verified delta in the browser. This makes routine updates smaller while preserving the full catalog.
+The current site keeps the compressed v10 base dataset and applies the verified v11 delta in the browser. v12 adds localization as a separate layer, so future catalog updates do not need three duplicate copies of the data.
 
 ## Source policy
 
