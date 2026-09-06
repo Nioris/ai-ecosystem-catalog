@@ -1,5 +1,35 @@
 # Changelog
 
+## v13 — 2026-09-06
+
+### September model refresh
+- Added **GPT-6 Astra** and marked GPT-5.6 Sol as the previous-generation OpenAI flagship.
+- Added **Claude Fable 5.1** and restricted-access **Claude Mythos 5.1**.
+- Added **Gemini 3.8 Flash**, **Gemini 3.8 Flash Cyber**, **Gemini Omni 1.1 Flash** and **Lyria 3.5**.
+- Corrected **GLM-5.3**: the full official open-weight checkpoint is now published; the catalog no longer marks its weights as pending.
+- Added **DeepSeek-V4-Pro-0813** and experimental **DeepSeek-V4-Flash-Vision-Exp**.
+- Added **Qwen-Drive-1.0-4B** for autonomous-driving perception/reasoning/planning research.
+- Added **Stable Audio 3 Optimized** deployment package.
+- Added **GPT-Realtime-2.1**, **GPT-Realtime-2.1 Mini** and **GPT-Image-2**.
+- Added specialized **WeatherNext 3** to broaden the catalog beyond general-purpose generative models.
+- Added a September release strip linking directly to official release/model pages.
+- New v13 cards include curated RU / EN / Simplified Chinese descriptions, requirements and notes.
+
+### Data pipeline
+- Added `data/v13-extra.b64` as a gzip+base64 incremental release payload, so fast model updates no longer require rebuilding the old compressed base catalog.
+- Added `v13-update.js` for incremental model insertion and stale-entry patches.
+- CI now validates the v13 payload and JavaScript syntax before publication.
+
+## v12.2 — 2026-09-01
+- Fixed profession/task matching to use token-aware keywords instead of broad substring matching.
+- Made profession and task selectors cascade in both directions.
+- Added live quick-filter counts and removable active-filter chips.
+- The top summary now shows the actual filtered result count instead of only the total catalog size.
+
+## v12.1 — 2026-09-01
+- Prevented Russian source text from leaking into English/Chinese cards when a manual translation is not yet available.
+- Added runtime localization safety for historical tags and requirements.
+
 ## v12 — 2026-09-01
 
 ### Multilingual UI
@@ -14,7 +44,6 @@
 ### Progressive content localization
 - Added `locales/ru.json`, `locales/en.json` and `locales/zh.json`.
 - Added curated English/Chinese content translations for newly verified projects such as MinerU, Agent Skills, Codebase Memory MCP, Prime Agent, Vercel AI SDK, DFlash and `codex-chatgpt-web`.
-- Untranslated long-form descriptions safely fall back to the original curated text and are visibly marked as `original RU` / `俄文原文`.
 - Added `TRANSLATIONS.md` with the contribution format.
 - Added `scripts/check_i18n.py` and a GitHub Actions locale-schema validation workflow.
 
