@@ -7,6 +7,9 @@ on:
       - "app.js"
       - "i18n-runtime.js"
       - "filter-v12.2.js"
+      - "v13-update.js"
+      - "data/v13-extra.json"
+      - "data/v13-extra.b64"
       - "index.html"
       - "scripts/check_i18n.py"
       - ".github/workflows/check-i18n.yml"
@@ -16,6 +19,9 @@ on:
       - "app.js"
       - "i18n-runtime.js"
       - "filter-v12.2.js"
+      - "v13-update.js"
+      - "data/v13-extra.json"
+      - "data/v13-extra.b64"
       - "index.html"
       - "scripts/check_i18n.py"
 
@@ -35,4 +41,15 @@ jobs:
           node --check app.js
           node --check i18n-runtime.js
           node --check filter-v12.2.js
+          node --check v13-update.js
+      - name: Check v13 compressed data
+        run: |
+          python - <<'PY'
+          import base64, gzip, json, pathlib
+          p=pathlib.Path('data/v13-extra.b64')
+          data=json.loads(gzip.decompress(base64.b64decode(p.read_text().strip())).decode('utf-8'))
+          assert data['version']=='v13'
+          assert len(data.get('newModels',[])) >= 10
+          print('v13 data OK:', len(data.get('newModels',[])), 'new models')
+          PY
       - run: python scripts/check_i18n.py
