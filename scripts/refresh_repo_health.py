@@ -7,6 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = ROOT / "data" / "repo-sources.json"
+EXTRA_SOURCES = ROOT / "data" / "repo-sources-extra.json"
 OUTPUT = ROOT / "data" / "repo-health.json"
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
 API = "https://api.github.com"
@@ -37,7 +38,12 @@ def short_date(value):
 
 def main():
     source = json.loads(SOURCES.read_text(encoding="utf-8"))
-    slugs = source["repositories"]
+    slugs = list(source["repositories"])
+    if EXTRA_SOURCES.exists():
+        extra = json.loads(EXTRA_SOURCES.read_text(encoding="utf-8"))
+        for slug in extra.get("repositories", []):
+            if slug not in slugs:
+                slugs.append(slug)
     today = datetime.now(timezone.utc).date().isoformat()
     result = {}
     errors = []
