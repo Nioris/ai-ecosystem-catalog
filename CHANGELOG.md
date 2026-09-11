@@ -1,5 +1,31 @@
 # Changelog
 
+## v14.1 — 2026-09-11
+
+### Uncensored / Reduced safeguards
+- Added a dedicated **Uncensored / Reduced safeguards** section instead of mixing these community checkpoints into the ordinary model list without context.
+- Added a global quick filter **Без цензуры / Uncensored / 无审查**.
+- Added curated cards for current Qwen, Gemma, GLM and DeepSeek community variants, including abliterated, uncensored fine-tune, balanced reduced-safeguards and roleplay/creative classes.
+- Added model lineage, modification class, parameter/format information, local runtime hints and safeguard-risk labels.
+- Added explicit warning that reduced refusal behavior does not imply better accuracy/reliability and that public/tool-using deployments need their own permission, logging and moderation layers.
+- Added full RU / EN / Simplified Chinese copy for the new section.
+- CI now validates the v14.1 JSON payload and JavaScript.
+
+## v14 — 2026-09-11
+
+### Unity / game-engine agents
+- Added **Unity In-Editor AI Assistant** with Ask / Plan / Agent modes.
+- Added the official **Unity Agent Plugin** for Claude Code, Codex and Grok workflows.
+- Added **Unity CLI + MCP Server** as a separate infrastructure layer for live Editor control.
+- Added the official Unity agent repository to the weekly GitHub health snapshot.
+
+### Agents / models / infrastructure
+- Added **DeepSeek-V4.1-Flash**.
+- Added **Qwen3.8-Max-0902**.
+- Updated **Kimi Code** with Tower multi-agent collaboration and newer agent/plugin workflows.
+- Added **Grok Bot** and new agent tooling where verified.
+- Added **OpenAI Secure MCP Tunnel** (`openai/tunnel-client`) and included it in repository health checks.
+
 ## v13 — 2026-09-06
 
 ### September model refresh
