@@ -1,0 +1,198 @@
+{
+  "version": "v14",
+  "updated": "2026-09-11",
+  "newModels": [
+    {
+      "name": "DeepSeek-V4.1-Flash",
+      "kind": "Модель",
+      "org": "DeepSeek",
+      "desc": "Новый open-weight мультимодальный MoE-флагман Flash-линейки с нативным visual understanding и новой Causal Encoder–Decoder архитектурой. 552B total; 8B активных параметров на входе и 16B на выходе, заметно меньший KV cache.",
+      "source": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+      "install": "hf download deepseek-ai/DeepSeek-V4.1-Flash --local-dir ./models/DeepSeek-V4.1-Flash",
+      "requirements": "Около 510 GB checkpoint. Практично — multi-GPU/server; vLLM и SGLang поддерживаются официально.",
+      "status": "Новый",
+      "locality": "Локально",
+      "tags2": ["Текст", "Кодинг", "Мультимодальные", "Зрение/OCR", "Агенты", "Open weights"],
+      "note": "Релиз 10.09.2026, MIT. DeepSeek позиционирует V4.1-Flash как более быстрый и экономичный следующий шаг архитектуры V4.",
+      "updated": "2026-09-10",
+      "run": "Transformers / vLLM / SGLang",
+      "i18n": {
+        "en": {"desc": "New open-weight multimodal MoE Flash flagship with native visual understanding and a new Causal Encoder–Decoder architecture. 552B total parameters; 8B active on input and 16B on output, with a much smaller KV cache.", "requirements": "About a 510 GB checkpoint. Practical deployment is multi-GPU/server; vLLM and SGLang are officially supported.", "note": "Released Sep 10, 2026 under MIT. DeepSeek positions V4.1-Flash as a faster, more efficient next step in the V4 architecture."},
+        "zh": {"desc": "新发布的开放权重多模态 MoE Flash 旗舰模型，具备原生视觉理解和新的 Causal Encoder–Decoder 架构。总参数 552B，输入阶段激活 8B、输出阶段激活 16B，并显著缩小 KV Cache。", "requirements": "Checkpoint 约 510 GB，实际部署适合多 GPU / 服务器；官方支持 vLLM 和 SGLang。", "note": "2026年9月10日发布，MIT 许可证。DeepSeek 将 V4.1-Flash 定位为 V4 架构更快、更高效的下一步。"}
+      }
+    },
+    {
+      "name": "Qwen3.8-Max-0902",
+      "kind": "Модель",
+      "org": "Qwen / Alibaba Cloud",
+      "desc": "Обновлённый облачный snapshot Qwen3.8-Max с усиленным engineering-scale coding, long-horizon autonomous development, collaborative agents и multimodal vision. Контекст 1M.",
+      "source": "https://www.alibabacloud.com/help/en/model-studio/newly-released-models",
+      "install": "Официальные веса не опубликованы. Использование: Alibaba Cloud Model Studio API, model id qwen3.8-max-0902.",
+      "requirements": "Облачная модель; локальное GPU не требуется.",
+      "status": "Новый",
+      "locality": "Облако",
+      "tags2": ["Текст", "Кодинг", "Мультимодальные", "Агенты", "1M context", "Cloud"],
+      "note": "Snapshot от 02.09.2026. Alibaba указывает заметное усиление сложных software-engineering и multi-tool agent задач.",
+      "updated": "2026-09-02",
+      "run": "Alibaba Cloud Model Studio API",
+      "i18n": {
+        "en": {"desc": "Updated Qwen3.8-Max cloud snapshot with stronger engineering-scale coding, long-horizon autonomous development, collaborative agents and multimodal vision. 1M context window.", "requirements": "Cloud model; no local GPU required.", "note": "Snapshot dated Sep 2, 2026. Alibaba reports major gains in complex software-engineering and multi-tool agent tasks."},
+        "zh": {"desc": "Qwen3.8-Max 的最新云端快照，强化了工程级编程、长周期自主开发、多 Agent 协作和多模态视觉能力，支持 1M 上下文。", "requirements": "云端模型，无需本地 GPU。", "note": "2026年9月2日快照。阿里云称其在复杂软件工程和多工具 Agent 任务上有明显提升。"}
+      }
+    }
+  ],
+  "newTools": [
+    {
+      "name": "Unity In-Editor AI Assistant",
+      "kind": "Game Engine AI",
+      "org": "Unity",
+      "desc": "Встроенный в Unity Editor проектно-контекстный AI-агент для Unity 6+: знает scene hierarchy, GameObjects, packages и target platform. Работает в режимах Ask, Plan и Agent; Agent может выполнять действия прямо в проекте.",
+      "source": "https://unity.com/blog/unity-ai-assistant-ask-plan-agent-mode-explained",
+      "install": "Unity 6.0+ → подключить проект к Unity Cloud → включить AI tools beta по официальной инструкции.",
+      "requirements": "Unity 6.0+; функции работают как облачный/встроенный сервис, отдельная локальная LLM не требуется.",
+      "status": "Open Beta",
+      "locality": "Гибрид",
+      "tags2": ["Game Development", "Unity", "Agent", "Editor", "Ask", "Plan", "MCP"],
+      "note": "Unity постепенно отказывается от бренда «Unity AI»: официальный набор теперь описывается как in-editor AI assistant, AI gateway, MCP server и generators.",
+      "updated": "проверено 2026-09-11",
+      "run": "Unity Editor",
+      "i18n": {
+        "en": {"desc": "Project-aware AI agent built directly into Unity Editor for Unity 6+. It understands scene hierarchy, GameObjects, installed packages and target platform. Ask, Plan and Agent modes range from guidance to direct project actions.", "requirements": "Unity 6.0+. The tools run as an integrated/cloud service; no separate local LLM is required.", "note": "Unity is retiring the ‘Unity AI’ brand. The official suite is now described by function: in-editor AI assistant, AI gateway, MCP server and generators."},
+        "zh": {"desc": "直接集成在 Unity Editor 中、面向 Unity 6+ 的项目感知 AI Agent。它理解场景层级、GameObject、已安装包和目标平台，并提供 Ask、Plan、Agent 三种模式，可从问答逐步升级到直接操作项目。", "requirements": "需要 Unity 6.0+。这些功能作为集成/云端服务运行，不要求单独部署本地 LLM。", "note": "Unity 正在弃用“Unity AI”品牌名称，官方现在按功能描述这套工具：编辑器内 AI Assistant、AI Gateway、MCP Server 和 Generators。"}
+      }
+    },
+    {
+      "name": "Official Unity Agent Plugin",
+      "kind": "Game Engine AI",
+      "org": "Unity",
+      "desc": "Официальный first-party plugin Unity для coding agents. В Claude Code устанавливает Unity engineering skills, Unity CLI и Unity MCP для live Editor control. Репозиторий уже также содержит инструкции установки для Codex и Grok.",
+      "source": "https://github.com/Unity-Technologies/unity-agent-plugin",
+      "install": "# Claude Code\n/plugin marketplace add Unity-Technologies/unity-agent-plugin\n/plugin install unity@unity-agent-plugin\n\n# Codex\ncodex plugin marketplace add Unity-Technologies/unity-agent-plugin\ncodex plugin add unity@unity-agent-plugin",
+      "requirements": "Unity + поддерживаемый coding agent. Для live Editor control используется Unity CLI/MCP; сам plugin не требует отдельной GPU.",
+      "status": "Новый",
+      "locality": "Гибрид",
+      "tags2": ["Game Development", "Unity", "Claude Code", "Codex", "Grok", "Agent Skills", "MCP", "CLI"],
+      "note": "Официально анонсирован 09.09.2026. Unity сообщает о 29 engine skills на старте; plugin поддерживается самой Unity.",
+      "updated": "2026-09-09",
+      "run": "Claude Code / Codex / Grok + Unity CLI",
+      "i18n": {
+        "en": {"desc": "Official first-party Unity plugin for coding agents. In Claude Code it installs Unity engineering skills, Unity CLI and Unity MCP for live Editor control. The repository also documents installation for Codex and Grok.", "requirements": "Unity plus a supported coding agent. Live Editor control uses Unity CLI/MCP; the plugin itself does not require a dedicated GPU.", "note": "Officially announced Sep 9, 2026. Unity says it ships with 29 engine skills at launch and is supported by Unity itself."},
+        "zh": {"desc": "Unity 官方第一方 coding agent 插件。在 Claude Code 中会安装 Unity 工程 Skills、Unity CLI 和用于实时控制 Editor 的 Unity MCP。官方仓库也已提供 Codex 与 Grok 的安装方式。", "requirements": "需要 Unity 和受支持的 coding agent。实时 Editor 控制通过 Unity CLI/MCP 完成，插件本身不需要独立 GPU。", "note": "2026年9月9日正式发布。Unity 表示首发包含 29 个引擎 Skills，并由 Unity 官方维护。"}
+      }
+    },
+    {
+      "name": "Unity CLI + MCP Server",
+      "kind": "MCP/Tools",
+      "org": "Unity",
+      "desc": "Официальный Unity CLI позволяет coding agents управлять Editor из терминала, а встроенный MCP server публикует команды подключённого Unity Editor как MCP tools. Конфигурируется одной командой для Claude, Cursor, VS Code и других клиентов.",
+      "source": "https://docs.unity.com/en-us/unity-cli/release-notes",
+      "install": "# После установки Unity CLI\nunity mcp configure <client>\n# coding agent получает Unity MCP tools через stdio",
+      "requirements": "Unity CLI + Unity Editor. Работает локально через stdio; GPU зависит только от самого Unity-проекта.",
+      "status": "Beta",
+      "locality": "Локально",
+      "tags2": ["Unity", "CLI", "MCP", "Game Development", "Editor Control", "Automation", "Agents"],
+      "note": "В beta.8 от 02.09.2026 MCP server встроен непосредственно в unity binary; Unity заявляет one-step configuration для 16 agent clients.",
+      "updated": "2026-09-02",
+      "run": "Unity CLI / stdio MCP",
+      "i18n": {
+        "en": {"desc": "Official Unity CLI lets coding agents control the Editor from the terminal, while the built-in MCP server exposes commands from a connected Unity Editor as MCP tools. One command configures clients such as Claude, Cursor and VS Code.", "requirements": "Unity CLI + Unity Editor. Runs locally over stdio; GPU needs depend only on the Unity project itself.", "note": "In beta.8 dated Sep 2, 2026, the MCP server is built directly into the unity binary; Unity advertises one-step configuration for 16 agent clients."},
+        "zh": {"desc": "官方 Unity CLI 允许 coding agent 从终端控制 Editor，内置 MCP Server 会把已连接 Unity Editor 的命令暴露为 MCP 工具，并可一条命令配置 Claude、Cursor、VS Code 等客户端。", "requirements": "需要 Unity CLI + Unity Editor。本地通过 stdio 运行；GPU 需求只取决于 Unity 项目本身。", "note": "2026年9月2日 beta.8 已把 MCP Server 直接集成到 unity binary 中，Unity 宣称支持 16 种 Agent 客户端的一键配置。"}
+      }
+    },
+    {
+      "name": "Kimi Code",
+      "kind": "Coding agent",
+      "org": "Moonshot AI",
+      "desc": "Официальный coding-agent stack Kimi. Актуальная ветка v0.41 добавила Tower multi-agent collaboration в Web, background agents, plugin marketplace, secondary-model pools и развитую работу с skills/MCP.",
+      "source": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html",
+      "install": "См. официальную установку Kimi Code CLI в документации; после установки используйте kimi / kimi web.",
+      "requirements": "Windows/macOS/Linux; модель может быть Kimi или совместимый provider. GPU не нужен при облачном backend.",
+      "status": "Обновление",
+      "locality": "Гибрид",
+      "tags2": ["Coding", "Agents", "Multi-agent", "Tower", "Plugins", "Skills", "MCP", "Kimi"],
+      "note": "v0.41.0 от 04.09.2026: Tower multi-agent collaboration в Web и улучшения background-agent workflow.",
+      "updated": "2026-09-04",
+      "run": "Kimi Code CLI / Web",
+      "i18n": {
+        "en": {"desc": "Official Kimi coding-agent stack. The current v0.41 line adds Tower multi-agent collaboration in Web, background agents, a plugin marketplace, secondary-model pools and mature skills/MCP workflows.", "requirements": "Windows/macOS/Linux; the model can be Kimi or a compatible provider. No local GPU is needed with a cloud backend.", "note": "v0.41.0 on Sep 4, 2026 adds Tower multi-agent collaboration in Web and improves background-agent workflows."},
+        "zh": {"desc": "Kimi 官方 coding-agent 工具链。当前 v0.41 加入 Web 版 Tower 多 Agent 协作、后台 Agent、插件市场、secondary-model pool 以及更成熟的 Skills/MCP 工作流。", "requirements": "支持 Windows/macOS/Linux；模型可以是 Kimi 或兼容 provider。使用云端 backend 时不需要本地 GPU。", "note": "v0.41.0 于 2026年9月4日发布，重点加入 Web Tower 多 Agent 协作并改进后台 Agent 工作流。"}
+      }
+    },
+    {
+      "name": "Grok Bot",
+      "kind": "Персональный агент",
+      "org": "SpaceXAI",
+      "desc": "Always-on cloud agents с собственным компьютером: работают в приложениях и сайтах, выполняют задачи end-to-end, сохраняют контекст и возвращаются только при необходимости решения пользователя. Теперь есть enterprise governance.",
+      "source": "https://x.ai/news/grok-bot-for-enterprise",
+      "install": "Облачный сервис; доступ через Grok Bot на поддерживаемых тарифах.",
+      "requirements": "Локальный GPU не требуется.",
+      "status": "Beta",
+      "locality": "Облако",
+      "tags2": ["Agents", "Computer Use", "Automation", "Persistent", "Enterprise", "Cloud"],
+      "note": "Enterprise-релиз 03.09.2026 добавил access/network/audit controls. Боты работают на отдельных cloud computers.",
+      "updated": "2026-09-03",
+      "run": "Grok Bot cloud",
+      "i18n": {
+        "en": {"desc": "Always-on cloud agents with their own computers. They work inside apps and websites, execute jobs end to end, retain context and return only when a decision is needed. Enterprise governance is now available.", "requirements": "No local GPU required.", "note": "Enterprise release on Sep 3, 2026 added access, network and audit controls. Each Bot runs on its own cloud computer."},
+        "zh": {"desc": "拥有独立云电脑的常驻 Agent，可在应用和网站中端到端执行任务、保留上下文，只在需要用户决策时返回。现已提供企业治理能力。", "requirements": "无需本地 GPU。", "note": "2026年9月3日 Enterprise 版本加入访问、网络和审计控制。每个 Bot 都运行在独立的云电脑上。"}
+      }
+    },
+    {
+      "name": "Gemini Desktop for Windows",
+      "kind": "Локальный UI",
+      "org": "Google",
+      "desc": "Официальное приложение Gemini для Windows с глобальным Alt+Space, работой поверх текущего desktop workflow, Google-app integrations и генерацией изображений/видео.",
+      "source": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-app-now-on-windows/",
+      "install": "Скачать с gemini.google/desktop.",
+      "requirements": "Windows PC + интернет; вычисления выполняются в облаке.",
+      "status": "Новый",
+      "locality": "Облако",
+      "tags2": ["Windows", "Desktop", "Gemini", "Images", "Video", "Google Apps"],
+      "note": "Вышло 10.09.2026. Это desktop client, а не локальная модель.",
+      "updated": "2026-09-10",
+      "run": "Windows desktop app",
+      "i18n": {
+        "en": {"desc": "Official Gemini app for Windows with global Alt+Space access, desktop workflow integration, Google-app integrations and image/video generation.", "requirements": "Windows PC + internet; inference is cloud-hosted.", "note": "Released Sep 10, 2026. This is a desktop client, not a local model."},
+        "zh": {"desc": "Google 官方 Gemini Windows 应用，支持全局 Alt+Space 快捷键、桌面工作流、Google 应用集成以及图像/视频生成。", "requirements": "需要 Windows PC 和网络；推理在云端完成。", "note": "2026年9月10日发布。这是桌面客户端，不是本地模型。"}
+      }
+    },
+    {
+      "name": "OpenAI Secure MCP Tunnel",
+      "kind": "MCP/Tools",
+      "org": "OpenAI",
+      "desc": "Официальный open-source tunnel client для безопасного подключения private/localhost MCP servers к ChatGPT, Codex, Responses API и AgentKit без публикации MCP endpoint в интернет.",
+      "source": "https://github.com/openai/tunnel-client",
+      "install": "# macOS\nbrew install openai/tools/tunnel-client\n# затем\ntunnel-client help quickstart",
+      "requirements": "Go binary / Homebrew / Docker/Kubernetes/VM варианты. Нужны OpenAI tunnel/API credentials; GPU не требуется.",
+      "status": "Новый",
+      "locality": "Гибрид",
+      "tags2": ["MCP", "OpenAI", "Codex", "ChatGPT", "Security", "Private Network", "Agents"],
+      "note": "Apache-2.0. Клиент использует outbound HTTPS long-poll, поэтому приватный MCP server не нужно открывать входящим соединением из интернета.",
+      "updated": "проверено 2026-09-11",
+      "run": "CLI / Docker / Kubernetes",
+      "i18n": {
+        "en": {"desc": "Official open-source tunnel client for securely connecting private or localhost MCP servers to ChatGPT, Codex, the Responses API and AgentKit without publishing the MCP endpoint to the public internet.", "requirements": "Go binary / Homebrew / Docker/Kubernetes/VM deployment options. Requires OpenAI tunnel/API credentials; no GPU needed.", "note": "Apache-2.0. The client uses outbound HTTPS long-polling, so the private MCP server does not need a public inbound endpoint."},
+        "zh": {"desc": "OpenAI 官方开源 Tunnel Client，可安全地把私有网络或 localhost 的 MCP Server 连接到 ChatGPT、Codex、Responses API 和 AgentKit，而无需把 MCP endpoint 暴露到公网。", "requirements": "支持 Go binary / Homebrew / Docker / Kubernetes / VM 部署。需要 OpenAI tunnel/API 凭据，不需要 GPU。", "note": "Apache-2.0。客户端通过 outbound HTTPS long-poll 工作，因此私有 MCP Server 不需要公网入站端口。"}
+      }
+    }
+  ],
+  "modelUpdates": [
+    {"name": "DeepSeek V4 Flash 0731", "patch": {"status": "Предыдущее поколение", "updated": "2026-09-10", "note": "На 10.09.2026 заменён новой DeepSeek-V4.1-Flash; сохраняется как исторический checkpoint."}}
+  ],
+  "repoAdditions": [
+    {"name": "Unity Agent Plugin", "category": "Игры и Web", "slug": "Unity-Technologies/unity-agent-plugin", "url": "https://github.com/Unity-Technologies/unity-agent-plugin", "clone": "git clone https://github.com/Unity-Technologies/unity-agent-plugin.git", "purpose": "Официальные Unity skills/plugin integrations для Claude Code, Codex и Grok; Unity CLI/MCP live Editor workflows.", "status": "A · Active", "note": "First-party Unity repository, релиз plugin анонсирован 09.09.2026.", "verified": "11.09.2026", "archived": false, "stars": 136, "forks": 11, "pushed": "2026-09-10", "license": "Other"},
+    {"name": "OpenAI Secure MCP Tunnel", "category": "Агенты и Кодинг", "slug": "openai/tunnel-client", "url": "https://github.com/openai/tunnel-client", "clone": "git clone https://github.com/openai/tunnel-client.git", "purpose": "Безопасно подключает private/localhost MCP servers к ChatGPT, Codex, Responses API и AgentKit без публичного inbound endpoint.", "status": "A · Active", "note": "Apache-2.0; outbound-only tunnel architecture.", "verified": "11.09.2026", "archived": false, "stars": 378, "forks": 77, "pushed": "2026-09-11", "license": "Apache-2.0"}
+  ],
+  "radarAdditions": [
+    {"name": "Unity Agent Plugin", "type": "Game Engine Agent Integration", "status": "Добавлено в каталог", "source": "Unity + GitHub", "url": "https://github.com/Unity-Technologies/unity-agent-plugin", "why": "Первый официальный Unity plugin для coding agents: skills + CLI + MCP/live Editor control.", "risk": "Agent может изменять сцены, assets и C# в Editor; используйте version control и подтверждения для чувствительных операций.", "stars": 136, "checked": "11.09.2026"},
+    {"name": "OpenAI Secure MCP Tunnel", "type": "MCP / Security", "status": "Добавлено в каталог", "source": "OpenAI + GitHub", "url": "https://github.com/openai/tunnel-client", "why": "Новый официальный способ подключить приватные MCP endpoints к ChatGPT/Codex без публичного сервера.", "risk": "Требует управления tunnel/API credentials и корректной сетевой/permission модели.", "stars": 378, "checked": "11.09.2026"}
+  ],
+  "highlights": [
+    {"date": "Sep 10", "name": "DeepSeek-V4.1-Flash", "source": "https://www.deepseek.com/en/news/deepseek-v4-1-flash/"},
+    {"date": "Sep 10", "name": "Gemini Desktop for Windows", "source": "https://blog.google/innovation-and-ai/products/gemini-app/gemini-app-now-on-windows/"},
+    {"date": "Sep 9", "name": "Official Unity Agent Plugin", "source": "https://unity.com/blog/unity-plugin-for-claude-code"},
+    {"date": "Sep 4", "name": "Kimi Code v0.41 Tower", "source": "https://www.kimi.com/code/docs/en/kimi-code/whats-new.html"},
+    {"date": "Sep 3", "name": "Grok Bot Enterprise", "source": "https://x.ai/news/grok-bot-for-enterprise"},
+    {"date": "Sep 2", "name": "Qwen3.8-Max-0902", "source": "https://www.alibabacloud.com/help/en/model-studio/newly-released-models"}
+  ]
+}
