@@ -9,9 +9,11 @@ on:
       - "filter-v12.2.js"
       - "v13-update.js"
       - "v14-update.js"
+      - "v14.1-update.js"
       - "data/v13-extra.json"
       - "data/v13-extra.b64"
       - "data/v14-extra.json"
+      - "data/v14.1-uncensored.json"
       - "index.html"
       - "scripts/check_i18n.py"
       - ".github/workflows/check-i18n.yml"
@@ -23,9 +25,11 @@ on:
       - "filter-v12.2.js"
       - "v13-update.js"
       - "v14-update.js"
+      - "v14.1-update.js"
       - "data/v13-extra.json"
       - "data/v13-extra.b64"
       - "data/v14-extra.json"
+      - "data/v14.1-uncensored.json"
       - "index.html"
       - "scripts/check_i18n.py"
 
@@ -47,6 +51,7 @@ jobs:
           node --check filter-v12.2.js
           node --check v13-update.js
           node --check v14-update.js
+          node --check v14.1-update.js
       - name: Check release data
         run: |
           python - <<'PY'
@@ -60,6 +65,12 @@ jobs:
           assert len(v14.get('newModels',[])) >= 2
           assert len(v14.get('newTools',[])) >= 6
           assert any(x.get('name')=='Official Unity Agent Plugin' for x in v14.get('newTools',[]))
-          print('release data OK:', len(data.get('newModels',[])), 'v13 models,', len(v14.get('newTools',[])), 'v14 tools')
+          u=json.loads(pathlib.Path('data/v14.1-uncensored.json').read_text(encoding='utf-8'))
+          assert u['version']=='v14.1'
+          assert len(u.get('models',[])) >= 8
+          assert all(x.get('source','').startswith('https://huggingface.co/') for x in u['models'])
+          assert all(x.get('risk') for x in u['models'])
+          assert all(x.get('i18n',{}).get('ru') and x.get('i18n',{}).get('zh') for x in u['models'])
+          print('release data OK:', len(data.get('newModels',[])), 'v13 models,', len(v14.get('newTools',[])), 'v14 tools,', len(u['models']), 'reduced-safeguards models')
           PY
       - run: python scripts/check_i18n.py
