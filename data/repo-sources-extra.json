@@ -1,0 +1,7 @@
+{
+  "updated": "2026-09-11",
+  "repositories": [
+    "Unity-Technologies/unity-agent-plugin",
+    "openai/tunnel-client"
+  ]
+}
